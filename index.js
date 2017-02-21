@@ -32,10 +32,4 @@ window.addEventListener( 'load', function(){
   fit();
   window.onresize = fit();
   setInterval( diffusion.calculate.bind( null, draw ), 125 );
-
-  document.body.onkeyup = function(e){
-      if(e.keyCode == 32){
-        console.log(diffusion.grid);
-      }
-  }
 });
