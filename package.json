@@ -1,0 +1,23 @@
+{
+  "name": "reactiondiffusion",
+  "version": "1.0.0",
+  "description": "A javascript browser example of reactive diffusion",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo 'test complete'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MisterRee/reactiondiffusion.git"
+  },
+  "author": "Danny Lee",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MisterRee/reactiondiffusion/issues"
+  },
+  "homepage": "https://github.com/MisterRee/reactiondiffusion#readme",
+  "dependencies": {
+    "browserify": "^14.1.0"
+  },
+  "devDependencies": {}
+}
