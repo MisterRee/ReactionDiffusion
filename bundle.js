@@ -13,7 +13,6 @@ module.exports = {
   init: function(){
     for( let y = 0; y < this.height; y++ ){
       this.grid[ y ] = [];
-      this.next[ y ] = [];
       for( let x = 0; x < this.width; x++ ){
         this.grid[ y ][ x ] = { a: 1, b: 0 };
       };
@@ -144,16 +143,18 @@ module.exports = {
     return sum;
   },
   calculate: function( callback ){
-    for( let y = 0; y < this.height; y++ ){
-      for( let x = 0; x < this.width; x++ ){
-        const a = cell.a;
-        const b = cell.b;
-        const nexta = a + (this.da * laplaceA( y, x ) * a - a * b * b  + this.f * ( 1 - a )) * this.t;
-        const nextb = b + (this.db * laplaceB( y, x ) * b - a * b * b - ( this.k + this.f ) * b ) * this.t;
-        this.next[ y ][ j ].a = nexta;
-        this.next[ y ][ j ].b = nextb;
-      };
-    };
+    for( let cy = 0; cy < this.height; cy++ ){
+      console.log( cy );
+      for( let cx = 0; cx < this.width; cx++ ){
+        console.log( cx );
+        const a = this.grid[ cy ][ cx ].a;
+        const b = this.grid[ cy ][ cx ].b;
+        const nexta = a + (this.da * this.laplaceA( y, x ) * a - a * b * b  + this.f * ( 1 - a )) * this.t;
+        const nextb = b + (this.db * this.laplaceB( y, x ) * b - a * b * b - ( this.k + this.f ) * b ) * this.t;
+        this.next[ cy ][ cx ].a = nexta;
+        this.next[ cy ][ cx ].b = nextb;
+      }
+    }
 
     this.grid = this.next;
     callback();
@@ -195,6 +196,12 @@ window.addEventListener( 'load', function(){
   fit();
   window.onresize = fit();
   setInterval( diffusion.calculate.bind( null, draw ), 125 );
+
+  document.body.onkeyup = function(e){
+      if(e.keyCode == 32){
+        console.log(diffusion.grid);
+      }
+  }
 });
 
 },{"./diffusion.js":1}]},{},[2]);
