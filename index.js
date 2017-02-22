@@ -17,6 +17,7 @@ let draw = function( obj ){
 
   for( let y = 0; y < diffusion.height; y++ ){
     for( let x = 0; x < diffusion.width; x++ ){
+      let value = Math.floor( diffusion.grid[ y ][ x ].b * 255 );
       ctx.fillStyle = "rgb(" + Math.floor( diffusion.grid[ y ][ x ].a * 255 ) + "," + Math.floor( diffusion.grid[ y ][ x ].b * 255 ) + ",0)";
       ctx.fillRect( x * grid_width, y * grid_height, grid_width, grid_height );
     }
@@ -31,5 +32,5 @@ window.addEventListener( 'load', function(){
   diffusion.init();
   fit();
   window.onresize = fit();
-  setInterval( diffusion.calculate.bind( null, draw ), 125 );
+  setInterval( () => diffusion.calculate( draw ), 125 );
 });
