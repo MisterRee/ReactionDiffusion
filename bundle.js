@@ -16,18 +16,18 @@ module.exports = {
   init: function(){
     for( let y = 0; y < this.height; y++ ){
       this.grid[ y ] = [];
+      this.next[ y ] = [];
       for( let x = 0; x < this.width; x++ ){
         this.grid[ y ][ x ] = { a: 1, b: 0 };
+        this.next[ y ][ x ] = { a: 0, b: 0 };
       };
     };
 
-    for( let ty = 95; ty < 105; ty++ ){
-      for( let tx = 95; tx < 105; tx++ ){
+    for( let ty = 90; ty < 110; ty++ ){
+      for( let tx = 90; tx < 110; tx++ ){
         this.grid[ ty ][ tx ].b = 1;
       }
     }
-
-    this.next = this.grid;
   },
   laplaceA: function( y, x ){
     let sum = 0;
@@ -205,7 +205,9 @@ module.exports = {
       }
     }
 
+    let temp = this.grid;
     this.grid = this.next;
+    this.next = temp;
     callback();
   }
 };
@@ -225,8 +227,6 @@ let fit = function(){
 }
 
 let draw = function( obj ){
-  ctx.fillStyle =  "rgb( 255 )";
-  ctx.fillRect(0, 0, canvas.width, canvas.height );
 
   for( let y = 0; y < diffusion.height; y++ ){
     for( let x = 0; x < diffusion.width; x++ ){

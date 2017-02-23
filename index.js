@@ -12,8 +12,6 @@ let fit = function(){
 }
 
 let draw = function( obj ){
-  ctx.fillStyle =  "rgb( 255 )";
-  ctx.fillRect(0, 0, canvas.width, canvas.height );
 
   for( let y = 0; y < diffusion.height; y++ ){
     for( let x = 0; x < diffusion.width; x++ ){
