@@ -14,7 +14,7 @@ let fit = function(){
 let draw = function( obj ){
   for( let y = 0; y < diffusion.height; y++ ){
     for( let x = 0; x < diffusion.width; x++ ){
-      let value = 255 - Math.floor( diffusion.grid[ y ][ x ].b * 255 );
+      let value = 255 - Math.round( diffusion.grid[ y ][ x ].b * 255 );
       ctx.fillStyle = "rgb(" + value + "," + value + "," + value + ")";
       ctx.fillRect( x * grid_width, y * grid_height, grid_width, grid_height );
     }

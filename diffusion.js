@@ -2,6 +2,8 @@ console.log( 'This has been browserified' );
 module.exports = {
    width: 200,
   height: 200,
+  sWidth: 16,
+ sHeight: 16,
       da: 1.0,
       db: 0.5,
        f: 0.055,
@@ -22,8 +24,8 @@ module.exports = {
       };
     };
 
-    for( let ty = 90; ty < 110; ty++ ){
-      for( let tx = 90; tx < 110; tx++ ){
+    for( let ty = Math.floor( this.height / 2 - this.sHeight / 2 ); ty < Math.ceil( this.height / 2 + this.sHeight / 2 ); ty++ ){
+      for( let tx = Math.floor( this.width / 2 - this.sWidth / 2 ); tx < Math.ceil( this.width / 2 + this.sWidth / 2 ); tx++ ){
         this.grid[ ty ][ tx ].b = 1;
       }
     }
@@ -31,7 +33,6 @@ module.exports = {
   laplaceA: function( y, x ){
     let sum = 0;
 
-    /*
     sum += this.grid[ y - 1 ][ x - 1 ].a * this.ldr;
     sum += this.grid[ y - 1 ][ x ].a * this.lar;
     sum += this.grid[ y - 1 ][ x + 1 ].a * this.ldr;
@@ -43,8 +44,8 @@ module.exports = {
     sum += this.grid[ y + 1 ][ x - 1 ].a * this.ldr;
     sum += this.grid[ y + 1 ][ x ].a * this.lar;
     sum += this.grid[ y + 1 ][ x + 1 ].a * this.ldr;
-    */
 
+    /*
     for( let n = 0; n < 9; n++ ){
       switch( n ){
         case 0:
@@ -108,12 +109,12 @@ module.exports = {
           break;
       }
     }
-
+    */
     return sum;
   },
   laplaceB: function( y, x ){
     let sum = 0;
-    /*
+
     sum += this.grid[ y - 1 ][ x - 1 ].b * this.ldr;
     sum += this.grid[ y - 1 ][ x ].b * this.lar;
     sum += this.grid[ y - 1 ][ x + 1 ].b * this.ldr;
@@ -125,7 +126,8 @@ module.exports = {
     sum += this.grid[ y + 1 ][ x - 1 ].b * this.ldr;
     sum += this.grid[ y + 1 ][ x ].b * this.lar;
     sum += this.grid[ y + 1 ][ x + 1 ].b * this.ldr;
-    */
+
+    /*
     for( let n = 0; n < 9; n++ ){
       switch( n ){
         case 0:
@@ -189,12 +191,13 @@ module.exports = {
           break;
       }
     }
+    */
 
     return sum;
   },
   calculate: function( callback ){
-    for( let cy = 0; cy < this.height; cy++ ){
-      for( let cx = 0; cx < this.width; cx++ ){
+    for( let cy = 1; cy < this.height - 1; cy++ ){
+      for( let cx = 1; cx < this.width - 1; cx++ ){
         const a = this.grid[ cy ][ cx ].a;
         const b = this.grid[ cy ][ cx ].b;
         this.next[ cy ][ cx ].a = a + ( this.da * this.laplaceA( cy, cx ) * a - a * b * b + this.f * ( 1 - a )) * this.t;
