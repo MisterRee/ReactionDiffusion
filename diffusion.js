@@ -31,6 +31,7 @@ module.exports = {
   laplaceA: function( y, x ){
     let sum = 0;
 
+    /*
     sum += this.grid[ y - 1 ][ x - 1 ].a * this.ldr;
     sum += this.grid[ y - 1 ][ x ].a * this.lar;
     sum += this.grid[ y - 1 ][ x + 1 ].a * this.ldr;
@@ -42,78 +43,77 @@ module.exports = {
     sum += this.grid[ y + 1 ][ x - 1 ].a * this.ldr;
     sum += this.grid[ y + 1 ][ x ].a * this.lar;
     sum += this.grid[ y + 1 ][ x + 1 ].a * this.ldr;
+    */
 
-    /*
     for( let n = 0; n < 9; n++ ){
       switch( n ){
         case 0:
           if( y === 0 || x === 0 ){
             continue;
           }
-          sum += this.grid[ y - 1 ][ x - 1 ].a * this.this.ldr;
+          sum += this.grid[ y - 1 ][ x - 1 ].a * this.ldr;
           break;
 
         case 1:
           if( y === 0 ){
             continue;
           }
-          sum += this.grid[ y - 1 ][ x ].a * this.this.lar;
+          sum += this.grid[ y - 1 ][ x ].a * this.lar;
           break;
 
         case 2:
           if( y === 0 || x + 1 === this.width ){
             continue;
           }
-          sum += this.grid[ y - 1 ][ x + 1 ].a * this.this.ldr;
+          sum += this.grid[ y - 1 ][ x + 1 ].a * this.ldr;
           break;
 
         case 3:
           if( x === 0 ){
             continue;
           }
-          sum += this.grid[ y ][ x - 1 ].a * this.this.lar;
+          sum += this.grid[ y ][ x - 1 ].a * this.lar;
           break;
 
         case 4:
-          sum += this.grid[ y ][ x ].a * this.this.lcr;
+          sum += this.grid[ y ][ x ].a * this.lcr;
           break;
 
         case 5:
           if( x + 1 === this.width ){
             continue;
           }
-          sum += this.grid[ y ][ x + 1 ].a * this.this.lar;
+          sum += this.grid[ y ][ x + 1 ].a * this.lar;
           break;
 
         case 6:
           if( y + 1 === this.height || x === 0 ){
             continue;
           }
-          sum += this.grid[ y + 1 ][ x - 1 ].a * this.this.ldr;
+          sum += this.grid[ y + 1 ][ x - 1 ].a * this.ldr;
           break;
 
         case 7:
           if( y + 1 === this.height ){
             continue;
           }
-          sum += this.grid[ y + 1 ][ x ].a * this.this.lar;
+          sum += this.grid[ y + 1 ][ x ].a * this.lar;
           break;
 
         case 8:
           if( y + 1 === this.height || x + 1 === this.width ){
             continue;
           }
-          sum += this.grid[ y + 1 ][ x + 1 ].a * this.this.ldr;
+          sum += this.grid[ y + 1 ][ x + 1 ].a * this.ldr;
           break;
       }
     }
-    */
 
     return sum;
   },
   laplaceB: function( y, x ){
     let sum = 0;
-
+    /*
     sum += this.grid[ y - 1 ][ x - 1 ].b * this.ldr;
     sum += this.grid[ y - 1 ][ x ].b * this.lar;
     sum += this.grid[ y - 1 ][ x + 1 ].b * this.ldr;
@@ -125,78 +125,76 @@ module.exports = {
     sum += this.grid[ y + 1 ][ x - 1 ].b * this.ldr;
     sum += this.grid[ y + 1 ][ x ].b * this.lar;
     sum += this.grid[ y + 1 ][ x + 1 ].b * this.ldr;
-
-    /*
+    */
     for( let n = 0; n < 9; n++ ){
       switch( n ){
         case 0:
           if( y === 0 || x === 0 ){
             continue;
           }
-          sum += this.grid[ y - 1 ][ x - 1 ].b * this.this.ldr;
+          sum += this.grid[ y - 1 ][ x - 1 ].b * this.ldr;
           break;
 
         case 1:
           if( y === 0 ){
             continue;
           }
-          sum += this.grid[ y - 1 ][ x ].b * this.this.lar;
+          sum += this.grid[ y - 1 ][ x ].b * this.lar;
           break;
 
         case 2:
           if( y === 0 || x + 1 === this.width ){
             continue;
           }
-          sum += this.grid[ y - 1 ][ x + 1 ].b * this.this.ldr;
+          sum += this.grid[ y - 1 ][ x + 1 ].b * this.ldr;
           break;
 
         case 3:
           if( x === 0 ){
             continue;
           }
-          sum += this.grid[ y ][ x - 1 ].b * this.this.lar;
+          sum += this.grid[ y ][ x - 1 ].b * this.lar;
           break;
 
         case 4:
-          sum += this.grid[ y ][ x ].b * this.this.lcr;
+          sum += this.grid[ y ][ x ].b * this.lcr;
           break;
 
         case 5:
           if( x + 1 === this.width ){
             continue;
           }
-          sum += this.grid[ y ][ x + 1 ].b * this.this.lar;
+          sum += this.grid[ y ][ x + 1 ].b * this.lar;
           break;
 
         case 6:
           if( y + 1 === this.height || x === 0 ){
             continue;
           }
-          sum += this.grid[ y + 1 ][ x - 1 ].b * this.this.ldr;
+          sum += this.grid[ y + 1 ][ x - 1 ].b * this.ldr;
           break;
 
         case 7:
           if( y + 1 === this.height ){
             continue;
           }
-          sum += this.grid[ y + 1 ][ x ].b * this.this.lar;
+          sum += this.grid[ y + 1 ][ x ].b * this.lar;
           break;
 
         case 8:
           if( y + 1 === this.height || x + 1 === this.width ){
             continue;
           }
-          sum += this.grid[ y + 1 ][ x + 1 ].b * this.this.ldr;
+          sum += this.grid[ y + 1 ][ x + 1 ].b * this.ldr;
           break;
       }
     }
-    */
 
     return sum;
   },
   calculate: function( callback ){
-    for( let cy = 1; cy < this.height - 1; cy++ ){
-      for( let cx = 1; cx < this.width - 1; cx++ ){
+    for( let cy = 0; cy < this.height; cy++ ){
+      for( let cx = 0; cx < this.width; cx++ ){
         const a = this.grid[ cy ][ cx ].a;
         const b = this.grid[ cy ][ cx ].b;
         this.next[ cy ][ cx ].a = a + ( this.da * this.laplaceA( cy, cx ) * a - a * b * b + this.f * ( 1 - a )) * this.t;
